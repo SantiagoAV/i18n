@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import Job from "./job";
 
 const JobsList = () => {
@@ -8,6 +9,7 @@ const JobsList = () => {
       name: "Manager",
       company: "Schneider Electric",
       salary: 4.5,
+      views: 3540,
       city: "Bogotá, Colombia",
       date: "2019-03-26",
     },
@@ -17,6 +19,7 @@ const JobsList = () => {
       company: "Google Inc.",
       salary: 20,
       city: "Palo Alto, CA, USA",
+      views: 1250,
       date: "2019-03-27",
     },
     {
@@ -24,22 +27,43 @@ const JobsList = () => {
       name: "Nurse",
       company: "Clínica La Aurora",
       salary: 1,
+      views: 134,
       city: "Cali, Colombia",
       date: "2019-03-28",
     },
   ]);
 
+  const theme = () => {
+    var selected;
+    navigator.language.startsWith('es')? selected='thead-light' : selected='thead-dark';
+
+    return selected
+  }
+
   return (
     <div>
       <table className="table">
-        <thead className="thead-dark">
+        <thead className={theme()}>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Position</th>
-            <th scope="col">Company</th>
-            <th scope="col">Salary</th>
-            <th scope="col">City</th>
-            <th scope="col">Publication date</th>
+            <th scope="col">
+              <FormattedMessage id="Position"/>
+            </th>
+            <th scope="col">
+              <FormattedMessage id="Company"/>
+            </th>
+            <th scope="col">
+              <FormattedMessage id="Salary"/> 
+            </th>
+            <th scope="col">
+              <FormattedMessage id="City"/>
+            </th>
+            <th scope="col">
+              <FormattedMessage id="Views"/>
+            </th>
+            <th scope="col">
+              <FormattedMessage id="PublicationDate"/>
+            </th>
           </tr>
         </thead>
         <tbody>
